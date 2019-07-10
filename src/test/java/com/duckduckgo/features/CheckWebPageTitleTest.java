@@ -6,23 +6,37 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class PageTileTest {
+public class CheckWebPageTitleTest {
 
-	@Test
-	public void see_page_tile_is_correct() {
+	private WebDriver chromeDriver;
 
+	@Before
+	public void tearUp() {
 		System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
-		// test code open browser
-		WebDriver chromeDriver = new ChromeDriver();
+
+		chromeDriver = new ChromeDriver();
 
 		chromeDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		chromeDriver.manage().window().maximize();
+
+	}
+
+	@After
+	public void tearDown() {
+		chromeDriver.quit();
+	}
+
+	@Test
+	public void testTitleEquals() {
+
 		// open a web page
 		chromeDriver.get("https://duckduckgo.com/");
 		// interact with any element on page
@@ -31,24 +45,19 @@ public class PageTileTest {
 		chromeDriver.findElement(By.id("search_button_homepage")).click();
 		// check something: Web page title
 
-		String acutalTile = chromeDriver.getTitle();
+		String acutalTitle = chromeDriver.getTitle();
 		String actualExpect = "Selenium Vietnam at DuckDuckGo";
 		// Verify
-		assertEquals(acutalTile, actualExpect);
-
-		chromeDriver.close();
-		chromeDriver.quit();
-
+		assertEquals(acutalTitle, actualExpect);
 	}
 
 	@Test
-	public void see_page_tile_is_not_correct() {
+	public void testTitleNotEquals() {
 
-		System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
-		WebDriver chromeDriver = new ChromeDriver();
-
-		chromeDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		chromeDriver.manage().window().maximize();
+		// set browser is Coccoc using chromeOptions
+		// ChromeOptions options = new ChromeOptions();
+		// options.setBinary("C:\\Users\\tranvan\\AppData\\Local\\CocCoc\\Browser\\Application\\browser.exe");
+		// chromeDriver = new ChromeDriver(options);
 
 		chromeDriver.get("https://duckduckgo.com/");
 		// find element
@@ -61,35 +70,22 @@ public class PageTileTest {
 
 		// Verify
 		assertNotEquals(actualString, expectedString);
-
-		chromeDriver.close();
-		chromeDriver.quit();
 	}
 
 	@Test
-	public void see_page_tile_contain_correct() {
+	public void testTitleContains() {
 
-		System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
-		WebDriver chromeDriver = new ChromeDriver();
-
-		chromeDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		chromeDriver.manage().window().maximize();
-
-		chromeDriver.get("https://duckduckgo.com/");
+		chromeDriver.get("https://www.google.com.vn/");
 		// find element
 
-		chromeDriver.findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
-		chromeDriver.findElement(By.id("search_button_homepage")).click();
+		chromeDriver.findElement(By.name("q")).sendKeys("Selenium Vietnam");
+		chromeDriver.findElement(By.name("btnK")).click();
 
 		String actualString = chromeDriver.getTitle();
 		String expectedString = "Seleniumvn";
 
 		// Verify
-		// "Page tile is contain "+expectedString,
+		// "Page title is contain "+expectedString,
 		assertTrue(actualString.contains(expectedString));
-
-		chromeDriver.close();
-		chromeDriver.quit();
-
 	}
 }
