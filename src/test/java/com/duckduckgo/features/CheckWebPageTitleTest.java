@@ -4,49 +4,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.TimeUnit;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class CheckWebPageTitleTest {
-
-	private WebDriver chromeDriver;
-
-	@Before
-	public void tearUp() {
-		System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
-
-		chromeDriver = new ChromeDriver();
-
-		chromeDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
-		chromeDriver.manage().window().maximize();
-
-	}
-
-	@After
-	public void tearDown() {
-		chromeDriver.quit();
-	}
-
+public class CheckWebPageTitleTest extends PageObject{
+	
 	@Test
 	public void testTitleEquals() {
 
 		// open a web page
-		chromeDriver.get("https://duckduckgo.com/");
+	    getDriver().get("https://duckduckgo.com/");
 		// interact with any element on page
 
-		chromeDriver.findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
-		chromeDriver.findElement(By.id("search_button_homepage")).click();
+	    getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
+	    getDriver().findElement(By.id("search_button_homepage")).click();
 		// check something: Web page title
 
-		String acutalTitle = chromeDriver.getTitle();
+		String acutalTitle = getDriver().getTitle();
 		String actualExpect = "Selenium Vietnam at DuckDuckGo";
+		
 		// Verify
 		assertEquals(acutalTitle, actualExpect);
 	}
@@ -59,13 +35,13 @@ public class CheckWebPageTitleTest {
 		// options.setBinary("C:\\Users\\tranvan\\AppData\\Local\\CocCoc\\Browser\\Application\\browser.exe");
 		// chromeDriver = new ChromeDriver(options);
 
-		chromeDriver.get("https://duckduckgo.com/");
+		getDriver().get("https://duckduckgo.com/");
+		
 		// find element
+		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
+		getDriver().findElement(By.id("search_button_homepage")).click();
 
-		chromeDriver.findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
-		chromeDriver.findElement(By.id("search_button_homepage")).click();
-
-		String actualString = chromeDriver.getTitle();
+		String actualString = getDriver().getTitle();
 		String expectedString = "SeleniumVietnam";
 
 		// Verify
@@ -75,13 +51,13 @@ public class CheckWebPageTitleTest {
 	@Test
 	public void testTitleContains() {
 
-		chromeDriver.get("https://www.google.com.vn/");
+		getDriver().get("https://www.google.com.vn/");
+		
 		// find element
+		getDriver().findElement(By.name("q")).sendKeys("Selenium Vietnam");
+		getDriver().findElement(By.name("btnK")).click();
 
-		chromeDriver.findElement(By.name("q")).sendKeys("Selenium Vietnam");
-		chromeDriver.findElement(By.name("btnK")).click();
-
-		String actualString = chromeDriver.getTitle();
+		String actualString = getDriver().getTitle();
 		String expectedString = "Seleniumvn";
 
 		// Verify
