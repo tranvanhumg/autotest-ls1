@@ -11,9 +11,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 public class TestCheckWebPageTitleUsingHamcrest extends PageObject {
-	
+
 	String urlString = "https://duckduckgo.com/";
-	
+
 	@Test
 	public void testTitleEquals() {
 		getDriver(urlString);

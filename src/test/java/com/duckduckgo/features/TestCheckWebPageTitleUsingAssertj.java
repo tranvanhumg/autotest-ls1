@@ -6,9 +6,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 public class TestCheckWebPageTitleUsingAssertj extends PageObject {
-	
+
 	String urlString = "https://duckduckgo.com/";
-	
+
 	@Test
 	public void testTitleEquals() {
 		getDriver(urlString);
