@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PageObject {
 	
-	private WebDriver chromedriver;
+	private  WebDriver chromedriver;
 	@Before
 	public void tearUp()
 	{
