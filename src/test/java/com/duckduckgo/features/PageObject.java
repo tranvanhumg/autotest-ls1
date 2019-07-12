@@ -29,7 +29,7 @@ public class PageObject {
 		return chromedriver;
 	}
 
-	public void openDriver() {
+	public void browseWeb() {
 		chromedriver.get(baseUrl);
 	}
 

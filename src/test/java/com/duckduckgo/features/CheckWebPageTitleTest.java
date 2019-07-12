@@ -12,7 +12,7 @@ public class CheckWebPageTitleTest extends PageObject {
 	@Test
 	public void testTitleEquals() {
 
-		openDriver();
+		browseWeb();
 
 		// interact with any element on page
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
@@ -34,7 +34,7 @@ public class CheckWebPageTitleTest extends PageObject {
 		// options.setBinary("C:\\Users\\tranvan\\AppData\\Local\\CocCoc\\Browser\\Application\\browser.exe");
 		// chromeDriver = new ChromeDriver(options);
 
-		openDriver();
+		browseWeb();
 
 		// find element
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
@@ -50,7 +50,7 @@ public class CheckWebPageTitleTest extends PageObject {
 	@Test
 	public void testTitleContains() {
 
-		openDriver();
+		browseWeb();
 		// find element
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
 		getDriver().findElement(By.id("search_button_homepage")).click();

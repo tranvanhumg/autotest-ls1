@@ -9,7 +9,7 @@ public class TestCheckWebPageTitleUsingAssertj extends PageObject {
 
 	@Test
 	public void testTitleEquals() {
-		openDriver();
+		browseWeb();
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
 		getDriver().findElement(By.id("search_button_homepage")).click();
 		// check something: Web page title
@@ -22,7 +22,7 @@ public class TestCheckWebPageTitleUsingAssertj extends PageObject {
 
 	@Test
 	public void testTitleNotEquals() {
-		openDriver();
+		browseWeb();
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
 		getDriver().findElement(By.id("search_button_homepage")).click();
 
@@ -35,7 +35,7 @@ public class TestCheckWebPageTitleUsingAssertj extends PageObject {
 
 	@Test
 	public void testTitleContains() {
-		openDriver();
+		browseWeb();
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
 		getDriver().findElement(By.id("search_button_homepage")).click();
 
