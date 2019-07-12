@@ -12,14 +12,13 @@ public class CheckWebPageTitleTest extends PageObject {
 	@Test
 	public void testTitleEquals() {
 
-		// open a web page
-		getDriver().get("https://duckduckgo.com/");
-		// interact with any element on page
+		openDriver();
 
+		// interact with any element on page
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
 		getDriver().findElement(By.id("search_button_homepage")).click();
-		// check something: Web page title
 
+		// check something: Web page title
 		String acutalTitle = getDriver().getTitle();
 		String actualExpect = "Selenium Vietnam at DuckDuckGo";
 
@@ -35,7 +34,7 @@ public class CheckWebPageTitleTest extends PageObject {
 		// options.setBinary("C:\\Users\\tranvan\\AppData\\Local\\CocCoc\\Browser\\Application\\browser.exe");
 		// chromeDriver = new ChromeDriver(options);
 
-		getDriver().get("https://duckduckgo.com/");
+		openDriver();
 
 		// find element
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
@@ -51,11 +50,10 @@ public class CheckWebPageTitleTest extends PageObject {
 	@Test
 	public void testTitleContains() {
 
-		getDriver().get("https://www.google.com.vn/");
-
+		openDriver();
 		// find element
-		getDriver().findElement(By.name("q")).sendKeys("Selenium Vietnam");
-		getDriver().findElement(By.name("btnK")).click();
+		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
+		getDriver().findElement(By.id("search_button_homepage")).click();
 
 		String actualString = getDriver().getTitle();
 		String expectedString = "Seleniumvn";

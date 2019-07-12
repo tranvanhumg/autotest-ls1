@@ -12,11 +12,9 @@ import org.openqa.selenium.By;
 
 public class TestCheckWebPageTitleUsingHamcrest extends PageObject {
 
-	String urlString = "https://duckduckgo.com/";
-
 	@Test
 	public void testTitleEquals() {
-		getDriver(urlString);
+		openDriver();
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
 		getDriver().findElement(By.id("search_button_homepage")).click();
 		// check something: Web page title
@@ -29,7 +27,7 @@ public class TestCheckWebPageTitleUsingHamcrest extends PageObject {
 
 	@Test
 	public void testTitleNotEquals() {
-		getDriver(urlString);
+		openDriver();
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
 		getDriver().findElement(By.id("search_button_homepage")).click();
 
@@ -42,7 +40,7 @@ public class TestCheckWebPageTitleUsingHamcrest extends PageObject {
 
 	@Test
 	public void testTitleContains() {
-		getDriver(urlString);
+		openDriver();
 		getDriver().findElement(By.id("search_form_input_homepage")).sendKeys("Selenium Vietnam");
 		getDriver().findElement(By.id("search_button_homepage")).click();
 

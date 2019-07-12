@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class PageObject {
 
 	private WebDriver chromedriver;
+	private final static String baseUrl = "https://duckduckgo.com/";;
 
 	@Before
 	public void tearUp() {
@@ -28,9 +29,8 @@ public class PageObject {
 		return chromedriver;
 	}
 
-	public WebDriver getDriver(String urlString) {
-		chromedriver.get(urlString);
-		return chromedriver;
+	public void openDriver() {
+		chromedriver.get(baseUrl);
 	}
 
 }
