@@ -25,7 +25,7 @@ public class CheckWebPageTitleTest extends PageObject {
 		assertEquals(acutalTitle, actualExpect);
 	}
 
-	@Test
+
 	public void testTitleNotEquals() {
 
 		// set browser is Coccoc using chromeOptions
@@ -46,7 +46,7 @@ public class CheckWebPageTitleTest extends PageObject {
 		assertNotEquals(actualString, expectedString);
 	}
 
-	@Test
+	
 	public void testTitleContains() {
 
 		browseWeb();
